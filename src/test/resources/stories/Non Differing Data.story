@@ -1,5 +1,6 @@
 Meta:
 @regression
+@author Yuri Vaz
 
 Narrative:
 As a diff tool user

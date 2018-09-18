@@ -22,9 +22,14 @@ public class DiffResultJbehaveSteps {
         diffResultSteps.getResultForDiffId(Serenity.sessionVariableCalled("uniqueId"));
     }
 
-    @Then("I verify that the diff response is of type EQUAL")
-    public void verifyDiffResponseIsEqual() {
-        diffResultSteps.verifyThatDiffResultIsEqual();
+    @Then("I verify that the diff response is of type $type")
+    public void verifyDiffResponseIsType(@Named("type") String type) {
+        diffResultSteps.verifyThatDiffResultIsType(type);
+    }
+
+    @Then("I verify that the diff response detail is '$responseMessage'")
+    public void verifyDiffResponseDetailIs(@Named("responseMessage") String responseMessage) {
+        diffResultSteps.verifyThatDiffResultDetailIs(responseMessage);
     }
 
     @Then("I verify that the diff response is left side with no value")

@@ -17,9 +17,14 @@ public class DiffResultSteps {
         response.then().statusCode(200);
     }
 
-    @Step("I verify the diff response is Equal")
-    public void verifyThatDiffResultIsEqual() {
-        response.then().body("type", is("EQUAL"));
+    @Step("I verify the diff response is {0}")
+    public void verifyThatDiffResultIsType(String type) {
+        response.then().body("type", is(type));
+    }
+
+    @Step("I verify the diff response detail is {0}")
+    public void verifyThatDiffResultDetailIs(String message) {
+        response.then().body("detail", is(message));
     }
 
     @Step("I verify the diff response is {0} side with no value")
