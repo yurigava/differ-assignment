@@ -11,4 +11,4 @@ From the project root folder:
 1. run `mvn clean install`
 
 ## Getting Reports
-To access reports, go to the <projectRoot>/target/site/serenity folder and open the index.html file.
+To access reports, go to the projectRoot-> target -> site -> serenity folder and open the index.html file.
