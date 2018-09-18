@@ -12,13 +12,24 @@ public class DiffResultSteps {
     private Response response;
 
     @Step("I get the diff result for id {0}")
-    public void getResultForDiffId(int id) {
+    public void getResultForDiffId(long id) {
         response = SerenityRest.when().get(SERVER_ADDRESS + id);
         response.then().statusCode(200);
     }
 
     @Step("I verify the diff response is Equal")
-    public void iVerifyThatDiffResultIsEqual() {
+    public void verifyThatDiffResultIsEqual() {
         response.then().body("type", is("EQUAL"));
+    }
+
+    @Step("I verify the diff response is {0} side with no value")
+    public void verifyThatDiffResultIsNoValue(String side) {
+        response.then().body("type", is("DIFFERENT_LENGTH"));
+        if("left".equals(side)) {
+                    response.then().body("detail", is("Left side contains no value."));
+        }
+        else {
+                    response.then().body("detail", is("Right side contains no value."));
+        }
     }
 }
